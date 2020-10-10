@@ -1,6 +1,7 @@
 <template>
   <div id="app">
       <div id="nav">
+          <img id="nav-logo" src="img/logo.png"/>
           <div id="nav-title">
             <h3>THOMAS LECONTE</h3>
           </div>
@@ -9,8 +10,8 @@
           <div id="nav-list">
               <li class="nav-item"><router-link tag="li" to="/"><i class="fas fa-home"></i> Home</router-link></li>
               <li class="nav-item"><router-link tag="li" to="/about"><i class="fas fa-address-card"></i> About</router-link></li>
-              <li class="nav-item"><router-link tag="li" to="/about"><i class="fas fa-project-diagram"></i> Projects</router-link></li>
-              <li class="nav-item"><router-link tag="li" to="/about"><i class="fas fa-envelope-open"></i> Contact</router-link></li>
+              <li class="nav-item"><router-link tag="li" to="/projects"><i class="fas fa-project-diagram"></i> Projects</router-link></li>
+              <li class="nav-item"><router-link tag="li" to="/contact"><i class="fas fa-envelope-open"></i> Contact</router-link></li>
           </div>
       </div>
       <div id="content">
@@ -22,8 +23,8 @@
 <style>
 
 :root{
-  --main-color: #f39c12;
-  --second-color: #f6e58d;
+  --main-color: #22a6b3;
+  --second-color: #7ed6df;
   --third-color: #cacaca;
 }
 
@@ -31,7 +32,8 @@
 body{
     padding: 0;
     margin: 0;
-    background-color: #1D1D1D;
+    background-image: url('assets/background-filter.jpg');
+    background-position: center;
 }
 
 #app {
@@ -41,6 +43,10 @@ body{
     text-align: center;
     display: flex;
 }
+
+/* ==================================================== */
+/* ===================     NAVBAR     ================= */
+/* ==================================================== */
 
 #nav{
     height: 100vh;
@@ -77,15 +83,23 @@ body{
 }
 
 #nav-title h3{
-  text-shadow: 0.1em 0.1em #333;
+  text-shadow: 0.1em 0.1em #333 1px 2px 3px #666;
   color: var(--main-color);
   font-size: 1.2vw;
 }
+
+/* ==================================================== */
+/* ===================    CONTENT     ================= */
+/* ==================================================== */
 
 #content{
     flex-basis: 90%;
     color: var(--second-color);
 }
+
+/* ==================================================== */
+/* =================     RESPONSIVE     =============== */
+/* ==================================================== */
 
 @media only screen and (max-width: 1000px) {
     #nav{
@@ -131,6 +145,7 @@ body{
 
     #check:checked ~#nav-list{
       top: 0;
+      z-index: 100000;
       transition: 0.2s ease-in-out;
     }
 
@@ -142,7 +157,7 @@ body{
     .nav-icon{
       display: block;
       position: fixed;
-      margin-top: 1.7vh;
+      margin-top: 3.5vh;
       top: 0;
       right: 0;
       margin-right: 5vw;
@@ -150,12 +165,17 @@ body{
       font-size: 30px;
     }
 
+    #nav-logo{
+      width: 80px;
+      height: 80px;
+    }
+
     #nav-title h3{
-      font-size: 2vw;
+      font-size: 3vw;
     }
 
     #content{
-      margin-top: -90vh;
+      margin-top: -0vh;
     }
 }
 
@@ -163,6 +183,14 @@ body{
 
     #nav-title h3{
       font-size: 4vw;
+    }
+
+}
+
+@media only screen and (max-width: 380px) {
+
+    #nav-title h3{
+      display: none;
     }
 
 }
