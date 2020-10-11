@@ -62,13 +62,7 @@ export default {
           'mail': mail.value,
           'message': message.value
         };
-        axios.post('https://reqres.in/api/users', data)
-            .then((res) => {
-                console.log(`Status: ${res.status}`);
-                console.log('Body: ', res.data);
-            }).catch((err) => {
-                console.error(err);
-            });
+        axios.post('http://192.168.1.22:8090/contacts/', data);
       }
     }
   }
