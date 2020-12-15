@@ -72,6 +72,7 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
   .contact{
+    animation: slide-bottom 0.5s ease;
     display: flex;
     margin-top: 7vh;
   }
