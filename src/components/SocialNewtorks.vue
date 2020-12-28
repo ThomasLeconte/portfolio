@@ -1,6 +1,6 @@
 <template>
   <div id="socialNetworks">
-    <h4>Social networks</h4>
+    <h4>Réseaux sociaux</h4>
     <div id="content">
       <div class="social">
         <a href="https://github.com/ThomasLeconte"><i class="fab fa-github"></i></a>

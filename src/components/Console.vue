@@ -67,7 +67,7 @@ export default {
 #console{
   display: grid;
   grid-auto-columns: 1fr;
-  grid-auto-rows: 5vh 40vh;
+  grid-auto-rows: 5vh auto;
 }
 
 .console-link{
@@ -113,6 +113,7 @@ export default {
   border-bottom-right-radius: 5px;
   text-align: left;
   padding: 10px;
+  min-height: 10vh;
   color: #51ff00;
   font-weight: 100;
   font-family: "Consolas";

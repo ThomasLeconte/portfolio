@@ -1,6 +1,6 @@
 <template>
     <div class="projects">
-        <h3>My projects : </h3>
+        <h3>Mes projets : </h3>
         <div id="left-card"></div>
         <div id="projects-list">
             <ProjectItem

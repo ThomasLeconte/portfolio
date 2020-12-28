@@ -7,7 +7,8 @@
             </div>
         </div>
         <div class="right-column">
-            {{this.description.substring(0,50)+"..."}}
+            {{this.description.substring(0,50)+"..."}}<br>
+            <button v-on:click="window.location.href = this.url">Consulter</button>
         </div>
     </div>
 </template>
@@ -38,6 +39,9 @@ export default {
                   break;
           }
           return result;
+      },
+      redirect(link){
+          document.location.href = link;
       }
   }
 }
@@ -51,7 +55,7 @@ export default {
         background: linear-gradient(to bottom right, #5e6061, #2c3e50); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
         box-shadow: 4px 4px 0px #09C3C3;
         display: grid;
-        grid-template-columns: 1fr 2fr;
+        grid-template-columns: 50% 50%;
         grid-template-rows: 1fr;
         min-height: 10vh;
         padding: 1vh 1vw;
@@ -84,6 +88,26 @@ export default {
     .right-column{
         text-align: left;
         padding-left: 10px;
+    }
+
+    .right-column button{
+        background-color: white;
+        border: none;
+        color: black;
+        text-transform: uppercase;
+        font-size: 1em;
+        font-weight: bold;
+        padding: 0.4vw;
+        margin-top: 20px;
+        transition: 0.3s ease-in-out;
+    }
+
+    .right-column button:hover{
+        background-color: #1D1D1D;
+        color: white;
+        box-shadow: 3px 3px 0px #FFBCBC;
+        cursor: pointer;
+        transition: 0.3s ease-in-out;
     }
 
 </style>

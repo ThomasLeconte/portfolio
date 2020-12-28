@@ -8,9 +8,9 @@
           <input id="check" type="checkbox">
           <label for="check" class="nav-icon"><i class="fa fa-bars"></i></label>
           <div id="nav-list">
-              <li class="nav-item"><router-link tag="li" to="/"><i class="fas fa-home"></i> Home</router-link></li>
-              <li class="nav-item"><router-link tag="li" to="/about"><i class="fas fa-address-card"></i> About</router-link></li>
-              <li class="nav-item"><router-link tag="li" to="/projects"><i class="fas fa-project-diagram"></i> Projects</router-link></li>
+              <li class="nav-item"><router-link tag="li" to="/"><i class="fas fa-home"></i> Accueil</router-link></li>
+              <li class="nav-item"><router-link tag="li" to="/about"><i class="fas fa-address-card"></i> A propos</router-link></li>
+              <li class="nav-item"><router-link tag="li" to="/projects"><i class="fas fa-project-diagram"></i> Projets</router-link></li>
               <li class="nav-item"><router-link tag="li" to="/contact"><i class="fas fa-envelope-open"></i> Contact</router-link></li>
           </div>
       </div>
@@ -198,7 +198,7 @@ body{
 
 }
 
-@media only screen and (max-width: 380px) {
+@media only screen and (max-width: 450px) {
 
     #nav-title h3{
       display: none;
