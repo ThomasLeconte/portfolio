@@ -43,7 +43,9 @@ export default {
     flex-basis: 70%;
   }
 
-  #socialNetworks{
-    width: 60vw;
+  @media only screen and (max-width: 750px) {
+    .home{
+      margin-top: 10vh;
+    }
   }
 </style>

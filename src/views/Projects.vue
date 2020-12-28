@@ -33,8 +33,6 @@ export default {
   mounted(){
     axios.get("https://api.github.com/users/thomasleconte/repos")
     .then(response => this.gitInfos = response.data);
-  },
-  methods:{
   }
 }
 </script>
@@ -51,7 +49,7 @@ export default {
     }
 
     #projects-list{
-        margin: 5vh 5vw;
+        margin: 5vh 5vw 5vh 3.5vw;
         display: grid;
         grid-template-columns: repeat(3, 1fr);
         grid-template-rows: 1fr 1fr;

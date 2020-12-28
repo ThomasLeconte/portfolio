@@ -1,18 +1,20 @@
 <template>
   <div id="app">
       <div id="nav">
+        <div id="nav-header">
           <img id="nav-logo" src="img/logo.png"/>
-          <div id="nav-title">
-            <h3>THOMAS LECONTE</h3>
-          </div>
-          <input id="check" type="checkbox">
-          <label for="check" class="nav-icon"><i class="fa fa-bars"></i></label>
-          <div id="nav-list">
-              <li class="nav-item"><router-link tag="li" to="/"><i class="fas fa-home"></i> Accueil</router-link></li>
-              <li class="nav-item"><router-link tag="li" to="/about"><i class="fas fa-address-card"></i> A propos</router-link></li>
-              <li class="nav-item"><router-link tag="li" to="/projects"><i class="fas fa-project-diagram"></i> Projets</router-link></li>
-              <li class="nav-item"><router-link tag="li" to="/contact"><i class="fas fa-envelope-open"></i> Contact</router-link></li>
-          </div>
+          <h3 id="nav-title">THOMAS LECONTE</h3>
+        </div>
+        
+        <input id="check" type="checkbox">
+        <label for="check" class="nav-icon"><i class="fa fa-bars"></i></label>
+        
+        <div id="nav-links">
+          <li class="nav-item"><router-link tag="li" to="/"><i class="fas fa-home"></i> Accueil</router-link></li>
+          <li class="nav-item"><router-link tag="li" to="/about"><i class="fas fa-address-card"></i> A propos</router-link></li>
+          <li class="nav-item"><router-link tag="li" to="/projects"><i class="fas fa-project-diagram"></i> Projets</router-link></li>
+          <li class="nav-item"><router-link tag="li" to="/contact"><i class="fas fa-envelope-open"></i> Contact</router-link></li>
+        </div>
       </div>
       <div id="content">
             <router-view/>
@@ -59,7 +61,7 @@ body{
     text-shadow: 0.1em 0.1em #333;
 }
 
-#nav-list li{
+#nav-links li{
   list-style-type: none;
   line-height: 10vh;
 }
@@ -82,7 +84,7 @@ body{
   background-color: #1D1D1D;
 }
 
-#nav-title h3{
+#nav-title{
   text-shadow: 0.1em 0.1em #333 1px 2px 3px #666;
   color: var(--main-color);
   font-size: 1.2vw;
@@ -117,7 +119,7 @@ body{
       flex-basis: 15%;
     }
 
-    #nav-title h3{
+    #nav-title{
       font-size: 1.7vw;
     }
 
@@ -126,48 +128,53 @@ body{
     }
 }
 
+/*LEFT SIDEBAR TO TOP NAVBAR*/
 @media only screen and (max-width: 750px) {
     #app{
       flex-direction: column;
     }
 
     #nav{
-      flex-direction: row;
-      line-height: 5vh;
+      height: 0vh;
     }
 
-    #nav-list{
+    #nav-links{
       position: absolute;
-      width: 100%;
+      width: 100vw;
       height: 100vh;
       top: -200%;
-      margin-top: 10vh;
-      left: 0;
-      text-align: center;
       background: linear-gradient(to bottom right, #1D1D1D 35%, #181818);
       transition: 0.3s ease-in-out;
     }
 
-    #nav-list li:hover{
+    #nav-header{
+      height: 11vh;
+      background-color: #181818;
+    }
+
+
+    #nav-links li:hover{
       color: var(--second-color);
       transition: 0.3s ease-in-out;
       background-color: #181818;
     }
 
-    #check:checked ~#nav-list{
-      top: 0;
+    /*QUAND LA CHECKBOX EST ACTIVE, ON AGIT SUR NAV-LINKS*/
+    #check:checked ~#nav-links{
+      top: 9.5vh;
       z-index: 100000;
       transition: 0.2s ease-in-out;
     }
 
-    .nav-item ~#nav-list{
-      left: 0;
+    /*QUAND ON CLIQUE SUR UN DES ITEMS DE NAV-LINKS, ON AGIT SUR NAV-LINKS*/
+    .nav-item ~#nav-links{
+      top: -200%;
       transition: 0.2s ease-in-out;
     }
 
     .nav-icon{
       display: block;
-      position: fixed;
+      position: absolute;
       margin-top: 3.5vh;
       top: 0;
       right: 0;
@@ -181,8 +188,8 @@ body{
       height: 80px;
     }
 
-    #nav-title h3{
-      font-size: 3vw;
+    #nav-title{
+      display: none;
     }
 
     #content{
@@ -192,7 +199,7 @@ body{
 
 @media only screen and (max-width: 500px) {
 
-    #nav-title h3{
+    #nav-title{
       font-size: 4vw;
     }
 
@@ -200,7 +207,7 @@ body{
 
 @media only screen and (max-width: 450px) {
 
-    #nav-title h3{
+    #nav-title{
       display: none;
     }
 
