@@ -3,19 +3,14 @@
     <div id="left-card"></div>
     <div id="about-card">
       <h2>A propos de moi</h2>
-      <Tchat/>
     </div>
     <div id="right-card"></div>
   </div>
 </template>
 
 <script>
-import Tchat from '@/components/Tchat.vue'
 export default {
   name: 'About',
-  components: {
-    Tchat
-  }
 }
 </script>
 

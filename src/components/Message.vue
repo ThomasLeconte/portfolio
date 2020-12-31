@@ -1,5 +1,9 @@
 <template>
-  <div class="message">
+  <div v-if="response" class="message response">
+    {{ text }}
+  </div>
+  <div v-else class="message">
+    {{ text }}
   </div>
 </template>
 
@@ -7,15 +11,5 @@
 export default {
   name: 'Message',
   props: {response:{type: Boolean}, text:{type: String}},
-  beforeMount(){
-      let message = document.getElementsByClassName("message")[0];
-      let pointer = document.createElement("div");
-      pointer.setAttribute("class", "message-pointer");
-      message.appendChild(pointer);
-      if(this.response){
-          message.setAttribute("class", "message response");
-          message.textContent = this.text;
-      }
-  }
 }
 </script>

@@ -1,64 +1,106 @@
 <template>
     <div class="tchat">
+      <h2>{{ title }}</h2>
       <div id="conversation">
-        <Message
-            v-for="(message, index) in messages"
-            :key="index"
-            :is="message"
-        />
-        <div class="message">
-          <div class="message-pointer"></div>
-          Wesh ça va ou quoi ? 🤣
-        </div>
         <div class="message response">
           <div class="message-pointer"></div>
-          Wesh ça va ou quoi ?
+          Quel est votre nom ?
         </div>
+        <Message
+            v-for="(message, index) in this.messages"
+            :key="index"
+            :text="message.text"
+            :response="message.response"
+        />
       </div>
       <div id="response-area">
-        <input type="text" id="response-input" placeholder="Ecrivez ici"/>
+        <input v-if="stop" type="text" disabled="disabled" id="response-input" placeholder="Ecrivez ici"/>
+        <input v-else @keyup.enter="sendMessage()" type="text" id="response-input" placeholder="Ecrivez ici"/>
         <i class="fas fa-paper-plane" @click="sendMessage()"></i>
       </div>
     </div>
 </template>
 
 <script>
-import Message from "@/components/Message.vue";
-import Vue from 'vue'
+import Message from "@/components/Message";
 export default {
   name: 'Tchat',
+  props: {title: String},
   data(){
       return{
-        messages: []
+        messages: [],
+        lastMessage: "name",
+        name: null,
+        surname: null,
+        email: null,
+        text: null,
+        stop: false
       }
   },
-  component:{
+  components:{
       Message
   },
   methods:{
       sendMessage(){
-        let message = Vue.component("Message", {
-          props: {
-            response: false,
-            text: "COUCOU"
+        let data = document.getElementById("response-input").value;
+        if(data.length > 0){
+          this.messages.push({text: data, response: false});
+
+          switch(this.lastMessage){
+            case "name":
+              this.name = data;
+              this.messages.push({text: "Quel est votre prénom ?", response: true});
+              this.lastMessage = "surname";
+              this.clearInput();
+              break;
+            case "surname":
+              this.surname = data;
+              this.messages.push({text: "Quel est votre email ?", response: true});
+              this.lastMessage = "email";
+              this.clearInput();
+              break;
+            case "email":
+              this.email = data;
+              this.messages.push({text: "Quel est votre message à transmettre ?", response: true});
+              this.lastMessage = "text";
+              this.clearInput();
+              break;
+            case "text":
+              this.text = data;
+              this.messages.push({text: "Message envoyé 👌", response: true});
+              this.stop = true;
+              this.lastMessage = "end";
+              this.clearInput();
+              break;
           }
-        });
-        this.messages.push(message);
+        }else{
+          alert("Vous devez renseigner une valeur !");
+        }
+      },
+      clearInput(){
+        let input = document.getElementById("response-input");
+        input.value = "";
       }
   }
 }
 </script>
 
 <style scoped>
+
+  .tchat h2{
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+
   #conversation{
     margin-top: 5vh;
     padding: 10px;
     padding-top: 25px;
-    max-height: 40vh;
+    height: 50vh;
     overflow-y: auto;
   }
 
-  .message /deep/{
+  .message{
     background-color: #22a6b3;
     color: white;
     padding: 10px;
@@ -73,7 +115,8 @@ export default {
     background-color: #27cfdf;
   }
 
-  .message-pointer{
+  .message::before{
+    content: ' ';
     height: 25px;
     width: 25px;
     background: #22a6b3;
@@ -81,17 +124,26 @@ export default {
     transform: rotate(45deg);
     border-radius: 0 0 12px 0;
     margin-top: -22px;
-    position: relative;
-    left: 10vw;
+    position: absolute;
+    left: 21vw;
   }
 
-  .response .message-pointer{
+  .response::before{
+    content: ' ';
+    height: 25px;
+    width: 25px;
     background-color: #27cfdf;
-    left: -10vw;
+    margin: 0 auto;
+    transform: rotate(45deg);
+    border-radius: 0 0 12px 0;
+    margin-top: -22px;
+    position: absolute;
+    left: 2vw;
   }
 
   #response-area{
     width: 100%;
+    padding-top: 10px;
   }
 
   #response-area input{
