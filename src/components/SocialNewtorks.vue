@@ -5,7 +5,7 @@
       <div class="social">
         <a href="https://github.com/ThomasLeconte"><i class="fab fa-github"></i></a>
         <a href="https://www.linkedin.com/in/thomas-leconte"><i class="fab fa-linkedin-in"></i></a>
-        <a href="contact"><i class="fas fa-envelope-open-text"></i></a>
+        <a href="mailto:thomasleconte05@gmail.com"><i class="fas fa-envelope-open-text"></i></a>
       </div>
     </div>
   </div>

@@ -112,8 +112,8 @@ export default {
   border-bottom-left-radius: 5px;
   border-bottom-right-radius: 5px;
   text-align: left;
-  padding: 10px;
-  min-height: 10vh;
+  padding: 10px 10px 10px 10px;
+  min-height: 27vh;
   color: #51ff00;
   font-weight: 100;
   font-family: "Consolas";

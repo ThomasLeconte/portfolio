@@ -83,7 +83,7 @@ export default {
 
   #contact-card{
     flex-basis: 50%;
-    width: 80vh;
+    width: 80vw;
     padding-bottom: 20px;
     background-color: #181818;
     display: grid;

@@ -1,6 +1,6 @@
 <template>
     <div class="projects">
-        <h3>Mes projets : </h3>
+        <h2>Mes projets : </h2>
         <div id="left-card"></div>
         <div id="projects-list">
             <ProjectItem
@@ -42,14 +42,13 @@ export default {
         animation: slide-bottom 0.5s ease;
     }
 
-    .projects h3{
+    .projects h2{
         text-transform: uppercase;
-        font-weight: bold;
         letter-spacing: 1px;
     }
 
     #projects-list{
-        margin: 5vh 5vw 5vh 3.5vw;
+        margin: 10vh 5vw 5vh 3.5vw;
         display: grid;
         grid-template-columns: repeat(3, 1fr);
         grid-template-rows: 1fr 1fr;

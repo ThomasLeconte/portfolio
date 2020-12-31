@@ -7,13 +7,13 @@
         </div>
         
         <input id="check" type="checkbox">
-        <label for="check" class="nav-icon"><i class="fa fa-bars"></i></label>
+        <label for="check" class="nav-icon" @click="() => {menuClosed = !menuClosed; updateMenu()}"><i class="fa fa-bars"></i></label>
         
-        <div id="nav-links">
-          <li class="nav-item"><router-link tag="li" to="/"><i class="fas fa-home"></i> Accueil</router-link></li>
-          <li class="nav-item"><router-link tag="li" to="/about"><i class="fas fa-address-card"></i> A propos</router-link></li>
-          <li class="nav-item"><router-link tag="li" to="/projects"><i class="fas fa-project-diagram"></i> Projets</router-link></li>
-          <li class="nav-item"><router-link tag="li" to="/contact"><i class="fas fa-envelope-open"></i> Contact</router-link></li>
+        <div id="nav-links" v-bind:class="getMenuClass">
+          <li class="nav-item" @click="closeMenu"><router-link tag="li" to="/"><i class="fas fa-home"></i> Accueil</router-link></li>
+          <li class="nav-item" @click="closeMenu"><router-link tag="li" to="/about"><i class="fas fa-address-card"></i> A propos</router-link></li>
+          <li class="nav-item" @click="closeMenu"><router-link tag="li" to="/projects"><i class="fas fa-project-diagram"></i> Projets</router-link></li>
+          <li class="nav-item" @click="closeMenu"><router-link tag="li" to="/contact"><i class="fas fa-envelope-open"></i> Contact</router-link></li>
         </div>
       </div>
       <div id="content">
@@ -21,6 +21,45 @@
       </div>
   </div>
 </template>
+
+<script>
+export default {
+  name: 'App',
+  data(){
+      return{
+          menuClosed: true
+      }
+  },
+  methods:{
+    updateMenu(){
+      let menu = document.getElementById('nav-links');
+      if(this.menuClosed){
+        console.log("fermeture");
+        menu.style.top = "-200%";
+      }else{
+        console.log("ouverture");
+        menu.style.top = "9.5vh";
+        menu.style.zIndex = "1000";
+      }
+    },
+    closeMenu(){
+      let menu = document.getElementById('nav-links');
+      menu.style.top = "-200%";
+      this.menuClosed = true;
+    }
+  },
+  computed: {
+    getMenuClass: function(){
+      console.log(this.menuClosed);
+      if(this.menuClosed){
+        return "nav-closed";
+      }else{
+        return "nav-opened";
+      }
+    }
+  }
+}
+</script>
 
 <style>
 
@@ -35,7 +74,8 @@ body{
     padding: 0;
     margin: 0;
     background-image: url('assets/background-filter.jpg');
-    background-position: center;
+    background-position: bottom left;
+    background-size: 155%;
 }
 
 #app {
@@ -90,6 +130,17 @@ body{
   font-size: 1.2vw;
 }
 
+.nav-opened{
+  top: 9.5vh;
+  transition: 0.2s ease-in-out;
+}
+
+.nav-closed{
+  top: -200%;
+  z-index: 1000;
+  transition: 0.2s ease-in-out;
+}
+
 /* ==================================================== */
 /* ===================    CONTENT     ================= */
 /* ==================================================== */
@@ -130,6 +181,12 @@ body{
 
 /*LEFT SIDEBAR TO TOP NAVBAR*/
 @media only screen and (max-width: 750px) {
+    body{
+      background-position: center left;
+      background-size: 450% 300%;
+      background-repeat: no-repeat;
+    }
+
     #app{
       flex-direction: column;
     }
@@ -159,23 +216,10 @@ body{
       background-color: #181818;
     }
 
-    /*QUAND LA CHECKBOX EST ACTIVE, ON AGIT SUR NAV-LINKS*/
-    #check:checked ~#nav-links{
-      top: 9.5vh;
-      z-index: 100000;
-      transition: 0.2s ease-in-out;
-    }
-
-    /*QUAND ON CLIQUE SUR UN DES ITEMS DE NAV-LINKS, ON AGIT SUR NAV-LINKS*/
-    .nav-item ~#nav-links{
-      top: -200%;
-      transition: 0.2s ease-in-out;
-    }
-
     .nav-icon{
       display: block;
       position: absolute;
-      margin-top: 3.5vh;
+      margin-top: 3.3vh;
       top: 0;
       right: 0;
       margin-right: 5vw;
@@ -212,5 +256,4 @@ body{
     }
 
 }
-
 </style>
