@@ -48,24 +48,16 @@ export default {
     }
 
     #projects-list{
-        margin: 10vh 5vw 5vh 3.5vw;
-        display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        grid-template-rows: 1fr 1fr;
-        grid-gap: 3vh;
+        margin: 5vh 5vw 0 3.5vw;
+        padding: 5vh 0 5vh 0;
+        display: flex;
+        flex-wrap: wrap;
+        height: 70vh;
+        overflow-y: auto;
+        scrollbar-color: #333 rgb(80, 80, 80);
+        scrollbar-shadow-color: antiquewhite;
+        scrollbar-width: thin;
     }
 
-    @media only screen and (max-width: 900px) {
-        #projects-list{
-            grid-template-columns: repeat(2, 1fr);
-            grid-template-rows: 1fr 1fr 1fr;
-        }
-    }
 
-        @media only screen and (max-width: 500px) {
-        #projects-list{
-            grid-template-columns: repeat(1, 1fr);
-            grid-template-rows: 1fr 1fr 1fr 1fr;
-        }
-    }
 </style>

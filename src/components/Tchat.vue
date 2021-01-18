@@ -71,6 +71,7 @@ export default {
               this.stop = true;
               this.lastMessage = "end";
               this.clearInput();
+              this.emitFormEvent();
               break;
           }
         }else{
@@ -80,6 +81,9 @@ export default {
       clearInput(){
         let input = document.getElementById("response-input");
         input.value = "";
+      },
+      emitFormEvent() {
+          this.$emit('send-contact-form', { nom: this.name, prenom: this.surname, mail: this.email, message: this.text });
       }
   }
 }
@@ -96,7 +100,7 @@ export default {
     margin-top: 5vh;
     padding: 10px;
     padding-top: 25px;
-    height: 50vh;
+    height: 60vh;
     overflow-y: auto;
   }
 
@@ -255,6 +259,10 @@ export default {
       width: 91%;
       padding: 5px;
       margin-right: 5px;
+    }
+
+    #conversation{
+      height: 50vh;
     }
   }
 

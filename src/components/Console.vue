@@ -114,8 +114,8 @@ export default {
   text-align: left;
   padding: 10px 10px 10px 10px;
   min-height: 27vh;
-  color: #51ff00;
   font-weight: 100;
+  color: #51ff00;
   font-family: "Consolas";
 }
 

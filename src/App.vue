@@ -84,6 +84,7 @@ body{
     -moz-osx-font-smoothing: grayscale;
     text-align: center;
     display: flex;
+
 }
 
 /* ==================================================== */
@@ -139,6 +140,22 @@ body{
   top: -200%;
   z-index: 1000;
   transition: 0.2s ease-in-out;
+}
+
+::-webkit-scrollbar {
+    width: 12px;
+}
+
+::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(82, 82, 82, 0.3); 
+    -webkit-border-radius: 10px;
+    border-radius: 10px;
+    
+}
+
+::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    -webkit-box-shadow: inset 0 0 6px rgba(119, 119, 119, 0.5); 
 }
 
 /* ==================================================== */
