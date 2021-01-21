@@ -40,6 +40,8 @@ export default {
     background-color: white;
     font-size: 2em;
     padding: 0.5em;
+    height: 30px;
+    width: 30px;
     border-radius: 100%;
     margin-bottom: 20px;
   }

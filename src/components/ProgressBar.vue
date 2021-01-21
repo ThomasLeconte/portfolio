@@ -3,7 +3,7 @@
     <span class="name">{{name}}</span>
     <div class="progress">
         <div class="progress-done" v-bind:style="{width: pourcent+'%'}">
-            <span class="value">{{ value }}%</span>
+            <span class="value">{{ value }}</span>
         </div>
     </div>
   </div>
@@ -42,25 +42,18 @@ export default {
     background-color: #d8d8d8;
     height: 30px;
     width: 300px;
-    border-radius: 20px;
     transition: 0.2s ease-in-out;
   }
 
   .progress-done{
     background: linear-gradient(to right, #00b4db 10%, #0083b0 90%);
     box-shadow: 4px 0 30px -2px black;
-    border-radius: 20px;
     display: flex;
     align-items: center;
     justify-content: center;
     height: 100%;
     width: 0;
     transition: 0.2s ease-in-out;
-  }
-
-  .progress-done:hover{
-    transition: 0.2s ease-in-out;
-    background: linear-gradient(to right, #0083b0 10%,  #00b4db 90%);
   }
 
   .progress-done .value{
@@ -119,7 +112,7 @@ export default {
     }
 
     .progress{
-      width: 230px;
+      width: 200px;
     }
   }
 

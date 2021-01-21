@@ -31,19 +31,34 @@ export default {
     return{
       skills:[
         {
-          name: "HTML",
+          name: "PHP",
+          pourcent: 80,
+          value: "80%",
+        },
+        {
+          name: "Java",
+          pourcent: 75,
+          value: "75%"
+        },
+        {
+          name: "JS",
+          pourcent: 70,
+          value: "70%"
+        },
+        {
+          name: "C#",
+          pourcent: 60,
+          value: "60%"
+        },
+        {
+          name: "MySQL",
+          pourcent: 65,
+          value: "65%"
+        },
+        {
+          name: "Post-\ngreSQL",
           pourcent: 100,
-          value: 100,
-        },
-        {
-          name: "CSS",
-          pourcent: 90,
-          value: 90
-        },
-        {
-          name: "CSS",
-          pourcent: 90,
-          value: 90
+          value: "En cours"
         }
       ]
     }
@@ -190,8 +205,16 @@ export default {
   }
 
   @media only screen and (max-width: 500px) {
+    .about{
+      margin-top: 3vh;
+    }
+
     #podium div{
       width: 20vw;
+    }
+
+    #about-card{
+      height: 73vh;
     }
   }
 </style>

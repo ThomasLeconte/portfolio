@@ -24,6 +24,7 @@
       <a class="console-link" href="contact"># - Contact</a><br>
       - # # # # # # # # # -<br>
        <br><span id="prefix">[Admin] $ </span><span id="cursor">_</span>
+       <textarea id="input" rows="1" v-model="input" @focus="inputFocused" @blur="inputFocused" @keyup.enter="keyEvent"></textarea>
     </div>
   </div>
 </template>
@@ -32,24 +33,64 @@
 export default {
   name: 'Console',
   props: {
-    title: String
+    title: {type: String}
+  },
+  data(){
+    return{
+      input: '',
+      displayCursor: true
+    }
   },
   beforeMount(){
-    var cursor = true;
     var speed = 250;
+    var cursor = false;
     setInterval(() => {
-      if(document.getElementById("cursor") !== null){
+      if(this.displayCursor){
         if(cursor) {
-        document.getElementById('cursor').style.opacity = 0;
+        document.getElementById('cursor').style.display = "inline-block";
         cursor = false;
         }else {
-          document.getElementById('cursor').style.opacity = 1;
+          document.getElementById('cursor').style.display = "none";
           cursor = true;
         }
       }
     }, speed);
   },
-  
+  methods:{
+    inputFocused(){
+      this.displayCursor = !this.displayCursor;
+      if(this.displayCursor){
+        document.getElementById('cursor').style.display = "inline-block";
+      }else{
+        document.getElementById('cursor').style.display = "none";
+      }
+    },
+    executeConsole(e){
+      if(e.keyCode == 13){
+        if(this.input != ''){
+          switch(this.input){
+            case "a propos":
+              window.location.href = "about";
+              break;
+
+            case "projets":
+              window.location.href = "projects";
+              break;
+
+            case "contact":
+              window.location.href = "contact";
+              break;
+          }
+        }
+      }
+    }
+  },
+  mounted(){
+    window.addEventListener("keypress", this.executeConsole);
+  },
+  destroyed(){
+    window.removeEventListener('keypress', this.doCommand);
+  }
 }
 </script>
 
@@ -108,7 +149,7 @@ export default {
 }
 
 #console-body{
-  background-color: #073349;
+  background-color: rgba(39, 41, 53, 0.85);
   border-bottom-left-radius: 5px;
   border-bottom-right-radius: 5px;
   text-align: left;
@@ -117,6 +158,20 @@ export default {
   font-weight: 100;
   color: #51ff00;
   font-family: "Consolas";
+}
+
+#console-body #input{
+  background: none;
+  border: none;
+  color: #51ff00;
+  font-family: "Consolas";
+  height: 20px;
+  resize: none;
+}
+
+#console-body #input:focus{
+  border: none;
+  outline: none;
 }
 
 a {
@@ -165,21 +220,21 @@ a {
 
 @media only screen and (max-width: 506px) {
   #console-controls #title{
-    flex-basis: 50%;
+    flex-basis: 60%;
   }
 
   #console-controls #controls{
-    flex-basis: 50%;
+    flex-basis: 40%;
   }
 }
 
 @media only screen and (max-width: 355px) {
   #console-controls #title{
-    flex-basis: 40%;
+    flex-basis: 60%;
   }
 
   #console-controls #controls{
-    flex-basis: 60%;
+    flex-basis: 40%;
   }
 }
 

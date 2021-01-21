@@ -80,6 +80,7 @@ export default {
         transform: translateY(-5vh);
         background-color: #2c3e50;
         width: 70px;
+        height: 70px;
         line-height: 70px;
         border-radius: 100%;
         font-size: 2.5em;
@@ -126,7 +127,8 @@ export default {
             margin-left: 40%;
             transform: translateY(-5vh);
             width: 80px;
-            line-height: 90px;
+            height: 80px;
+            line-height: 80px;
             font-size: 3em;
         }
     }
