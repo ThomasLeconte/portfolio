@@ -1,1 +1,0 @@
-java -jar target/cv-website-0.0.1-SNAPSHOT.jar
